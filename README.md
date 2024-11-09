@@ -1,0 +1,2 @@
+Initialise with
+#npm init
