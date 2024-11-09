@@ -1,12 +1,3 @@
-// const express = require("express");
-// const app = express();
-
-// const {getEmployer, postEmployer} = require("../controllers/employer.controller");
-
-// app.get("api/getemployer", getEmployer);
-// app.post("api/postemployer", postEmployer);
-
-
 const express = require('express');
 const router = express.Router();
 const createJobSeekers= require('../controllers/jobseeker.controller.js');
