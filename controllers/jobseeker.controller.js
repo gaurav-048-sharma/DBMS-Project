@@ -27,7 +27,7 @@ const createJobSeeker = async (req, res) => {
             skills,
             appliedJobs,
         });
-        console.log(result);
+        
         const result = await newJobSeeker.save();
         return res.status(201).json({ message: "Job seeker created successfully", data: result });
     } catch (error) {
