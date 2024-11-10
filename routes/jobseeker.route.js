@@ -5,6 +5,7 @@ const createJobSeekers= require('../controllers/jobseeker.controller.js');
 
 // Route for creating a new job provider
 router.post('/seekers', createJobSeekers);
+router.get("/seekers",createJobSeekers.seekerdashboard );
 
 // Route for creating a new job seeker
 // router.post('/seekers', createJobSeeker);

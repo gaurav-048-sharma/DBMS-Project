@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new</title>
+</head>
+<body>
+    <!-- <form method="POST" action="/api/providers">
+        <input name="title" placeholder="title" type="text">
+        <br>
+        <input name="email" placeholder="email" type="email">
+        <br>
+        <input name="number" placeholder="" type="number">
+        <br>
+        <button>Submit</button>
+    </form> -->
+    <h1>Create Job Provider</h1>
+    <form action="/api/providers" method="POST">
+        <!-- Job Provider Information -->
+        <h2>Provider Information</h2>
+        <label for="name">Provider Name:</label>
+        <input type="text" name="name" id="name" required>
+        <br><br>
+
+        <label for="contactEmail">Contact Email:</label>
+        <input type="email" name="contactEmail" id="contactEmail" required>
+        <br><br>
+
+        <label for="contactPhone">Contact Phone:</label>
+        <input type="tel" name="contactPhone" id="contactPhone" required>
+        <br><br>
+
+        <!-- Job Listing Information -->
+        <h2>Job Listing</h2>
+        <label for="title">Job Title:</label>
+        <input type="text" name="jobListings[0][title]" id="title" required>
+        <br><br>
+
+        <label for="description">Job Description:</label>
+        <textarea name="jobListings[0][description]" id="description" required></textarea>
+        <br><br>
+
+        <label for="location">Location:</label>
+        <input type="text" name="jobListings[0][location]" id="location" required>
+        <br><br>
+
+        <label for="requirements">Requirements (comma separated):</label>
+        <input type="text" name="jobListings[0][requirements]" id="requirements" placeholder="e.g., JavaScript, Node.js, MongoDB">
+        <br><br>
+
+        <label for="salary">Salary:</label>
+        <input type="text" name="jobListings[0][salary]" id="salary" required>
+        <br><br>
+
+        <label for="datePosted">Date Posted:</label>
+        <input type="date" name="jobListings[0][datePosted]" id="datePosted">
+        <br><br>
+
+        <button type="submit">Create Job Provider</button>
+    </form>
+</body>
+</html>

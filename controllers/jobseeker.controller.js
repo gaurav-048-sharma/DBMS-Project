@@ -38,6 +38,20 @@ const createJobSeeker = async (req, res) => {
 module.exports = createJobSeeker ;
 
 
+module.exports.seekerdashboard = async(req, res) => {
+    const routes = await JobSeeker.find({});
+    res.render("./jobseeker/seekerdashboard.ejs" , {routes});
+    // const id = req.params.id;
+    // JobSeeker.findById(id).then((jobseeker) => {
+    //     if (!jobseeker) {
+    //         return res.status(404).json({ message: "Job seeker not found" });
+    //     }
+    //     res.json(jobseeker);
+    //     })
+    
+}
+
+
 
 
 

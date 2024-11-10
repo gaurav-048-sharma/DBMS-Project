@@ -2,14 +2,19 @@
 const JobProvider = require('../model/jobprovider.model.js');
 
 
-const getProvider = async(req, res) => {
-    const allgetusers = await JobProvider.find({});
-    return res.json(allgetusers);
+module.exports.dashbaord = async(req, res) => {
+    const routes = await JobProvider.find({});
+    res.render("./jobprovider/providerdashboard.ejs", {routes});
 }
-
-module.exports = getProvider;
-
-const postProvider = async (req, res) => {
+module.exports.newprovider = (req, res) => {
+    res.render("./jobprovider/providernew.ejs");
+}
+module.exports.show = async(req, res) => {
+    const {id} = req.params;
+    const routes = await JobProvider.findById(id);
+    res.render("./jobprovider/providershow.ejs",{routes});
+}
+module.exports.postProvider = async (req, res) => {
     const { name, contactEmail, contactPhone, jobListings } = req.body;
 
     // Validate top-level fields
@@ -43,15 +48,13 @@ const postProvider = async (req, res) => {
             jobListings
         });
         const result = await newProvider.save();
-        return res.status(201).json({ message: "Job provider created successfully", data: result });
+        res.redirect("/api/providers")
+        // return res.status(201).json({ message: "Job provider created successfully", data: result });
     } catch (error) {
         console.error("Error creating job provider:", error);
         return res.status(500).json({ message: "Server error", error: error.message });
     }
 };
-
-module.exports =postProvider;
-
 
 
 

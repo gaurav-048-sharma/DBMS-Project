@@ -5,8 +5,12 @@ const createJobProvider= require('../controllers/jobprovider.controller.js');
 const getjobProvider = require("../controllers/jobprovider.controller.js");
 
 // Route for creating a new job provider
-router.get("/providers", getjobProvider);
-router.post('/providers', createJobProvider);
+
+router.post('/providers', createJobProvider.postProvider);
+router.get("/providers", getjobProvider.dashbaord);
+router.get("/providers/new", getjobProvider.newprovider);
+router.get("/providers/:id", getjobProvider.show);
+
 
 // Route for creating a new job seeker
 // router.post('/seekers', createJobSeeker);
