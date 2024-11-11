@@ -1,6 +1,19 @@
 const mongoose = require("mongoose");
 const JobSeeker = require("../model/jobseeker.model.js");
-const createJobSeeker = async (req, res) => {
+const JobProvider = require('../model/jobprovider.model.js');
+module.exports.seekerdashboard = async(req, res) => {
+    const routes = await JobProvider.find({});
+    res.render("./jobseeker/seekerdashboard.ejs" , {routes});
+    // const id = req.params.id;
+    // JobSeeker.findById(id).then((jobseeker) => {
+    //     if (!jobseeker) {
+    //         return res.status(404).json({ message: "Job seeker not found" });
+    //     }
+    //     res.json(jobseeker);
+    //     })
+    
+}
+module.exports.Seekercreate = async (req, res) => {
     const { name, email, phone, skills, appliedJobs } = req.body;
 
     // Validate required fields
@@ -35,21 +48,7 @@ const createJobSeeker = async (req, res) => {
         return res.status(500).json({ message: "Server error", error: error.message });
     }
 };
-module.exports = createJobSeeker ;
 
-
-module.exports.seekerdashboard = async(req, res) => {
-    const routes = await JobSeeker.find({});
-    res.render("./jobseeker/seekerdashboard.ejs" , {routes});
-    // const id = req.params.id;
-    // JobSeeker.findById(id).then((jobseeker) => {
-    //     if (!jobseeker) {
-    //         return res.status(404).json({ message: "Job seeker not found" });
-    //     }
-    //     res.json(jobseeker);
-    //     })
-    
-}
 
 
 

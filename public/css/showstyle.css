@@ -1,0 +1,96 @@
+/* Reset some basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Heading animations */
+h3, h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #444;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1s forwards, slideDown 1s forwards;
+}
+
+/* Fade in and slide down animation */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+/* List styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+li {
+    background-color: #fff;
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effect for list items */
+li:hover {
+    transform: translateX(10px);
+    background-color: #e9f5fb;
+}
+
+/* Link styling */
+a , button{
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    padding: 8px 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+button, a:hover {
+    color: #0056b3;
+    transform: scale(1.05);
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Button-like appearance for links */
+button, a {
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+/* button, a:hover {
+    background-color: #0056b3;
+} */
+button {
+    border: none;
+    background-color: #dd1717;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}

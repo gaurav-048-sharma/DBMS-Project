@@ -6,11 +6,17 @@
     <title>Seeker Dashboard</title>
 </head>
 <body>
-    <% for(route of routes)  {%>
-        <a href=""><%= route.name %></a> <br>
-        <a href=""><%= route.email %></a> <br>
-        <a href=""><%= route.phone %></a><br>
-        <hr>
-    <% } %>
+    <h1>Job Seekers</h1>
+
+    <div class="dashboard-container">
+        <% for(let route of routes) { %>
+            <div class="seeker-card">
+                <a href="/api/providers/<%= route._id %>"><%= route.name %></a>
+                <form method="GET" action="/api/providers/new">
+                    <button>Apply</button>
+                </form>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>

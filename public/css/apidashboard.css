@@ -1,0 +1,48 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* Anchor links styling */
+a {
+    display: inline-block;
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+a[href="/api/providers"] {
+    background-color: #007bff; /* Blue for 'HIRE!' */
+}
+
+a[href="/api/seekers"] {
+    background-color: #28a745; /* Green for 'GET HIRED!' */
+}
+
+/* Hover effects */
+a:hover {
+    transform: scale(1.1);
+}
+
+a:active {
+    transform: scale(1.05);
+}

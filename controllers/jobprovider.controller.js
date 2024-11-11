@@ -57,6 +57,39 @@ module.exports.postProvider = async (req, res) => {
 };
 
 
+module.exports.editproviders = async(req,res) => {
+    const {id} = req.params;
+    const routes = await JobProvider.findById(id);
+    res.render("./jobprovider/provideredit.ejs", {routes});
+}
+
+
+module.exports.updateProviders = async (req, res) => {
+        const { id } = req.params;
+        const { name, contactEmail, contactPhone, jobListings } = req.body;
+    
+        
+            const updatedProvider = await JobProvider.findByIdAndUpdate(id, {...req.body});
+    
+            if (!updatedProvider) {
+                return res.status(404).json({ message: "Provider not found" });
+            }
+    
+            res.redirect(`/api/providers/${id}`);
+          
+    };
+
+module.exports.deleteProviders = async(req, res) => {
+    const { id } = req.params;
+    let deletedProvider = await JobProvider.findByIdAndDelete(id);
+    console.log(deletedProvider);
+    res.redirect("/api/providers");
+
+}
+    
+
+
+
 
 
 

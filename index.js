@@ -7,6 +7,7 @@ const JobSeekerRoutes = require("./routes/jobseeker.route.js");
 const JobProviderRoutes = require("./routes/jobProvider.route.js")
 const connectToMongoDB = require("./mongoose/DB.connect.js");
 const path = require("path");
+const methodOverride = require("method-override");
 // const file = fs.writeFileSync("about.txt", "hello there");
 // console.log(file, fs.write);
 
@@ -15,6 +16,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json()); //to parse the incoming requests with JSON payloads (from req.body);
+app.use(express.static(path.join(__dirname, "/public")));
+app.use(methodOverride("_method"));
 // app.use(cookieParser());
 // app.get("/" , async (req, res) => {
 //     const routes = await JobProviderRoutes.find({});

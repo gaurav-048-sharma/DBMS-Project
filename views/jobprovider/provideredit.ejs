@@ -18,48 +18,48 @@
         <button>Submit</button>
     </form> -->
     <!-- <h1>Create Job Provider</h1> -->
-    <form action="/api/providers" method="POST">
+    <form action="/api/providers/<%= routes._id %>?_method=PUT" method="POST">
         <!-- Job Provider Information -->
-        <h2>Provider Information</h2>
+        <h2>Edit Provider Information</h2>
         <label for="name">Provider Name:</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" value="<%= routes.name %>" required>
         <br><br>
 
         <label for="contactEmail">Contact Email:</label>
-        <input type="email" name="contactEmail" id="contactEmail" required>
+        <input type="email" value="<%= routes.contactEmail %>" name="contactEmail" id="contactEmail" required>
         <br><br>
 
         <label for="contactPhone">Contact Phone:</label>
-        <input type="tel" name="contactPhone" id="contactPhone" required>
+        <input type="tel" name="contactPhone" id="contactPhone" value="<%= routes.contactPhone %>" required>
         <br><br>
 
         <!-- Job Listing Information -->
         <h2>Job Listing</h2>
         <label for="title">Job Title:</label>
-        <input type="text" name="jobListings[0][title]" id="title" required>
+        <input type="text" value="<%= routes.jobListings[0].title %>" name="jobListings[0][title]" id="title" required>
         <br><br>
 
         <label for="description">Job Description:</label>
-        <textarea name="jobListings[0][description]" id="description" required></textarea>
+        <textarea name="jobListings[0][description]" id="description" required><%= routes.jobListings[0].description %></textarea>
         <br><br>
 
         <label for="location">Location:</label>
-        <input type="text" name="jobListings[0][location]" id="location" required>
+        <input type="text" value="<%= routes.jobListings[0].location %>" name="jobListings[0][location]" id="location" required>
         <br><br>
 
         <label for="requirements">Requirements (comma separated):</label>
-        <input type="text" name="jobListings[0][requirements]" id="requirements" placeholder="e.g., JavaScript, Node.js, MongoDB">
+        <input type="text" value="<%= routes.jobListings[0].requirements %>" name="jobListings[0][requirements]" id="requirements" placeholder="e.g., JavaScript, Node.js, MongoDB">
         <br><br>
 
         <label for="salary">Salary:</label>
-        <input type="text" name="jobListings[0][salary]" id="salary" required>
+        <input type="text" value="<%= routes.jobListings[0].salary %>" name="jobListings[0][salary]" id="salary" required>
         <br><br>
 
         <label for="datePosted">Date Posted:</label>
-        <input type="date" name="jobListings[0][datePosted]" id="datePosted">
+        <input type="date" value="<%= routes.jobListings[0].datePosted %>" name="jobListings[0][datePosted]" id="datePosted">
         <br><br>
 
-        <button type="submit">Create Job Provider</button>
+        <button type="submit">Edit</button>
     </form>
 </body>
 </html>

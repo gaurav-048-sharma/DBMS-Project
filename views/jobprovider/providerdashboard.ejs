@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JobProvider Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
-    <h1>hello world</h1>
+    <h1>Job Providers</h1>
     <form method="GET" action="/api/providers/new">
         <button>Create</button>
     </form>
-    <% for(let route of routes)  {%>
-        <li><a href="/api/providers/<%= route._id %>"><%= route.name %></a> <br>
-      </li>
-    <% } %>
+    <br><br>
+    <br><br>
+    <div class="dashboard-container">
+        <% for(let route of routes) { %>
+            <div class="provider-card">
+                <a href="/api/providers/<%= route._id %>"><%= route.name %></a>
+                <p>Click to view details</p>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>

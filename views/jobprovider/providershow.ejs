@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>show </title>
+    <link rel="stylesheet" href="/css/showstyle.css">
 </head>
 <body>
-    <h3>detailes</h3>
+    <h3>Details</h3>
     <ul>
-        <li><%= routes.name %></li>
-        <li><%= routes.contactEmail %></li>
-        <li><%= routes.contactPhone %></li>
-        
+        <li>Name: <%= routes.name %></li>
+        <li>Contact Email: <%= routes.contactEmail %></li>
+        <li>Contact Phone: <%= routes.contactPhone %></li>
     </ul>
+
+    <h4>Job Listings</h4>
+    <ul>
+        <% routes.jobListings.forEach((listing) => { %>
+            <li>Title: <%= listing.title %></li>
+            <li>Description: <%= listing.description %></li>
+            <li>Location: <%= listing.location %></li>
+            <li>Requirements: <%= listing.requirements %></li>
+            <li>Salary: <%= listing.salary %></li>
+            <li>Date Posted: <%= listing.datePosted %></li>
+            <br>
+        <% }); %>
+    </ul>
+    <div class="buttonTag">
+        <a href="/api/providers/<%=routes._id%>/edit"  >Edit</a>
+        <a href="/api/providers"  >Back</a>
+    </div>
+    
+    <form action="/api/providers/<%= routes._id %>?_method=DELETE" method="POST">
+        <button> Delete</button>
+    </form>
 </body>
 </html>
