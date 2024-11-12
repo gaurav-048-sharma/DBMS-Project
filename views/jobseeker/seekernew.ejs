@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <h1>Job Application Form</h1>
+    <form action="/api/job-seeker/apply" method="POST">
+        
+        <!-- Job Seeker Information -->
+        <label for="name">Full Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" id="phone" required>
+
+        <label for="skills">Skills (comma-separated):</label>
+        <input type="text" name="skills" id="skills" placeholder="e.g., JavaScript, Python, Node.js">
+
+        <!-- Job Application Information -->
+        <h2>Job Application Details</h2>
+        <label for="jobId">Job ID:</label>
+        <input type="text" name="jobId" id="jobId" required>
+
+        <label for="providerId">Provider ID:</label>
+        <input type="text" name="providerId" id="providerId" required>
+
+        <button type="submit">Apply Now</button>
+    </form>
+</body>
+</html>
