@@ -87,8 +87,19 @@ module.exports.confirmDeleteProvider = async (req, res) => {
         res.render("./jobprovider/confirmProviderDelete.ejs", { routes });
     };
 module.exports.deleteProviders = async(req, res) => {
+    // const { id } = req.params;
+    // let deletedProvider = await JobProvider.findByIdAndDelete(id);
+    // res.redirect("/api/providers");
     const { id } = req.params;
-    let deletedProvider = await JobProvider.findByIdAndDelete(id);
+    const { confirm } = req.body; // Expecting "yes" or "no" from the form
+
+    if (confirm === "yes") {
+        const deletedProvider = await JobProvider.findByIdAndDelete(id);
+        console.log("Deleted provider:", deletedProvider);
+        return res.redirect("/api/providers");
+    }
+
+    // If the user did not confirm deletion, redirect back to the providers list
     res.redirect("/api/providers");
 
 }
