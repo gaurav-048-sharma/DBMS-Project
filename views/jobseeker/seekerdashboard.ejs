@@ -11,8 +11,8 @@
     <div class="dashboard-container">
         <% for(let route of routes) { %>
             <div class="seeker-card">
-                <a href="/api/providers/<%= route._id %>"><%= route.name %></a>
-                <form method="GET" action="/api/providers/new">
+                <a href="/api/seekers/<%= route._id %>"><%= route.name %></a>
+                <form method="GET" action="/api/seekers/applynew">
                     <button>Apply</button>
                 </form>
             </div>

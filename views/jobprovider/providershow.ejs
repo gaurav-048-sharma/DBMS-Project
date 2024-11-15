@@ -21,18 +21,25 @@
             <li>Description: <%= listing.description %></li>
             <li>Location: <%= listing.location %></li>
             <li>Requirements: <%= listing.requirements %></li>
-            <li>Salary: <%= listing.salary %></li>
+            <li>Salary: <%= listing.salary.toLocaleString("en-IN") %></li>
             <li>Date Posted: <%= listing.datePosted %></li>
             <br>
         <% }); %>
     </ul>
     <div class="buttonTag">
+        <a href="/api/providers/<%=routes.providerId%>/seekers"  >Check the applicants</a>
+    </div>
+    <div class="buttonTag">
         <a href="/api/providers/<%=routes._id%>/edit"  >Edit</a>
         <a href="/api/providers"  >Back</a>
+        
+    </div>
+    <div class="buttonTag ">
+        <a href="/api/providers/<%= routes._id %>/delete" class="delete">Delete</a>
     </div>
     
-    <form action="/api/providers/<%= routes._id %>?_method=DELETE" method="POST">
-        <button> Delete</button>
-    </form>
+
+
+    
 </body>
 </html>

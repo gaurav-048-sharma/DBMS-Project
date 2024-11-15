@@ -9,6 +9,12 @@ const JobListingSchema = new mongoose.Schema({
     requirements: [String],
     salary: { type: String, required: true },
     datePosted: { type: Date, default: Date.now },
+    applicants: [
+        {
+             type: mongoose.Schema.Types.ObjectId,
+             ref: 'JobSeeker' 
+        }
+    ]  // Reference to job seekers
 });
 
 const JobProviderSchema = new mongoose.Schema({

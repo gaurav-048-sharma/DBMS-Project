@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Deletion</title>
+    <link rel="stylesheet" href="/css/delete.css"> <!-- Link to your CSS file if external -->
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to delete the provider <%= routes.name %>?</h2>
+        <form action="/api/providers/<%= routes._id %>/delete?_method=DELETE" method="POST">
+            <input type="hidden" name="confirm" value="yes">
+            <button type="submit">Yes, delete</button>
+        </form>
+        <form action="/api/providers" method="GET">
+            <button type="submit">No, go back</button>
+        </form>
+    </div>
+</body>
+</html>

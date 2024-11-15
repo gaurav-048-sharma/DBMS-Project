@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/api/seekers/<%= routes._id %>?_method=PUT" method="POST">
+        
+        <!-- Job Seeker Information -->
+        <label for="name">Full Name:</label>
+        <input type="text" name="name" id="name" value="<%= routes.name %>" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<%= routes.email %>" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" id="phone" value="<%= routes.phone %>" required>
+
+        <label for="skills">Skills (comma-separated):</label>
+        <input type="text" name="skills" id="skills" value="<%= routes.skills %>" placeholder="e.g., JavaScript, Python, Node.js">
+        <button type="submit">Edit</button>
+    </form>
+
+
+    
+</body>
+</html>

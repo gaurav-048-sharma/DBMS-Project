@@ -1,6 +1,6 @@
 // controllers/jobprovider.controller.js
 const JobProvider = require('../model/jobprovider.model.js');
-
+const JobSeeker = require("../model/jobseeker.model.js");
 
 module.exports.dashbaord = async(req, res) => {
     const routes = await JobProvider.find({});
@@ -78,13 +78,37 @@ module.exports.updateProviders = async (req, res) => {
             res.redirect(`/api/providers/${id}`);
           
     };
-
+module.exports.confirmDeleteProvider = async (req, res) => {
+        const { id } = req.params;
+        const routes = await JobProvider.findById(id);
+        if (!routes) {
+            return res.status(404).json({ message: "Provider not found" });
+        }
+        res.render("./jobprovider/confirmProviderDelete.ejs", { routes });
+    };
 module.exports.deleteProviders = async(req, res) => {
     const { id } = req.params;
     let deletedProvider = await JobProvider.findByIdAndDelete(id);
-    console.log(deletedProvider);
     res.redirect("/api/providers");
 
+}
+
+
+module.exports.getSeekers = async(req, res) => {
+    try {
+        const { providerId } = req.params;
+
+        // Find all job seekers who have applied to this provider's jobs
+        const jobSeekers = await JobSeeker.find({
+            'appliedJobs.providerId': providerId
+        });
+
+        // Pass jobSeekers data to the EJS template
+        res.render('./jobprovider/provideseeker.ejs', { jobSeekers });
+    } catch (error) {
+        console.error("Error retrieving job seekers:", error);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
 }
     
 

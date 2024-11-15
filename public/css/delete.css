@@ -1,0 +1,67 @@
+/* General styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.container {
+    text-align: center;
+    max-width: 500px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+/* Form button styling */
+form {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button[type="submit"] {
+    background-color: #d9534f; /* Red color for delete button */
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
+}
+
+form:nth-child(2) button {
+    background-color: #5bc0de; /* Blue color for cancel button */
+    color: #fff;
+}
+
+form:nth-child(2) button:hover {
+    background-color: #31b0d5;
+    transform: scale(1.05);
+}

@@ -22,7 +22,10 @@ const JobSeekerSchema = new mongoose.Schema({
     email: { type: String, required: true },
     phone: { type: String, required: true },
     skills: [String],
-    appliedJobs: [JobApplicationSchema]
+    appliedJobs: [JobApplicationSchema],
+    createdAt: {
+        type: Date, default: Date.now,
+    }
 });
 
 module.exports = mongoose.model('JobSeeker', JobSeekerSchema);

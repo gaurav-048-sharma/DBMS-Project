@@ -88,7 +88,7 @@ button, a {
 /* button, a:hover {
     background-color: #0056b3;
 } */
-button {
+.delete {
     border: none;
     background-color: #dd1717;
     color: #fff;

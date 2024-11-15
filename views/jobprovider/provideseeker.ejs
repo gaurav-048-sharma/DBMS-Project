@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seekers</title>
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #007bff;
+        }
+        
+        .seeker-card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+     </style>
+</head>
+<body>
+    <h1>Job Seekers</h1>
+    
+    <% if (jobSeekers && jobSeekers.length > 0) { %>
+        <% jobSeekers.forEach(seeker => { %>
+            <div class="seeker-card">
+                <h2><%= seeker.name %></h2>
+                <p>Email: <%= seeker.email %></p>
+                <p>Phone: <%= seeker.phone %></p>
+                <h3>Applied Jobs</h3>
+                <ul>
+                    <% seeker.appliedJobs.forEach(job => { %>
+                        <li>Job ID: <%= job.jobId %> | Status: <%= job.status %> | Applied On: <%= job.dateApplied.toDateString() %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No job seekers found for this provider.</p>
+    <% } %>
+
+</body>
+</html>
