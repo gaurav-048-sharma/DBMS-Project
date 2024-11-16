@@ -8,8 +8,9 @@ const JobProvider = require('../model/jobprovider.model.js');
 module.exports.seekerdashboard = async(req, res) => {
     // const routes = await JobProvider.find({});
     // res.render("./jobseeker/seekerdashboard.ejs" , {routes});
+    
     const routes = await JobProvider.find({}).populate('jobListings').exec();
-
+    const seekerRoutes = await JobSeeker.find({})
     if (!routes || routes.length === 0) {
         return res.status(404).send('No job listings or providers found.');
     }
@@ -25,7 +26,7 @@ module.exports.seekerdashboard = async(req, res) => {
         }))
     );
 
-    res.render("./jobseeker/seekerdashboard.ejs", {jobListings});
+    res.render("./jobseeker/seekerdashboard.ejs", {jobListings, seekerRoutes});
 
 }
 module.exports.newSeeker = async(req, res) => {
@@ -91,21 +92,7 @@ module.exports.newSeeker = async(req, res) => {
     //     }
     // });
 }
-module.exports.seekerApplicants = async(req, res) => {
-    const {id} = req.params;
-    const routes = await JobSeeker.findById(id);
-    res.render("./jobseeker/seekershow.ejs",{routes});
-    // const id = req.params.id;
-    // JobSeeker.findById(id).then(async(jobseeker) => {
-    //     if (!jobseeker) {
-    //         return res.status(404).json({ message: "Job seeker not found" });
-    //     }
-    //     const applicants = await JobProvider.find({ jobseekerId: id });
-    //     // res.json(applicants);
-    //     res.render("./jobseeker/seekershow.ejs" , {applicants});
-    // })
-    
-}
+
 module.exports.Seekercreate = async (req, res) => {
     const { name, email, phone, skills, appliedJobs } = req.body;
 
@@ -142,6 +129,27 @@ module.exports.Seekercreate = async (req, res) => {
         return res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+
+module.exports.showSeekers = async(req, res) => {
+    const routes = await JobSeeker.find({});
+    res.render("./jobseeker/seekerloop.ejs", {routes});
+}
+module.exports.seekerApplicants = async(req, res) => {
+    const {id} = req.params;
+    const routes = await JobSeeker.findById(id);
+    res.render("./jobseeker/seekershow.ejs",{routes});
+    // const id = req.params.id;
+    // JobSeeker.findById(id).then(async(jobseeker) => {
+    //     if (!jobseeker) {
+    //         return res.status(404).json({ message: "Job seeker not found" });
+    //     }
+    //     const applicants = await JobProvider.find({ jobseekerId: id });
+    //     // res.json(applicants);
+    //     res.render("./jobseeker/seekershow.ejs" , {applicants});
+    // })
+    
+}
+
 module.exports.editseekers = async(req,res) => {
     const {id} = req.params;
     const routes = await JobSeeker.findById(id);
@@ -158,14 +166,13 @@ module.exports.updateSeekers = async (req, res) => {
             return res.status(404).json({ message: "Provider not found" });
         }
 
-        res.redirect(`/api/seekers/${id}`);
+        res.redirect(`/api/seekers/show/${id}`);
       
 };
 
 module.exports.deleteSeekers = async(req, res) => {
     const { id } = req.params;
     let deletedSeekers = await JobSeeker.findByIdAndDelete(id);
-    console.log(deletedSeekers);
     res.redirect("/api/seekers");
 }
 

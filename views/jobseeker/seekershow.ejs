@@ -4,26 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Heading styles */
+        h3 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* Styling the list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.1rem;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Styling buttons and links */
+        .buttonTag {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttonTag a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .buttonTag a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Styling the form button */
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        form button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        form button:hover {
+            background-color: #a71d2a;
+            transform: scale(1.05);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            ul {
+                padding: 15px;
+            }
+
+            ul li {
+                font-size: 1rem;
+            }
+
+            .buttonTag a,
+            form button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h3>Details</h3>
     <ul>
-        
         <li>Name: <%= routes.name %></li>
         <li>Contact Email: <%= routes.email %></li>
         <li>Contact Phone: <%= routes.phone %></li>
-        <li>Contact Phone: <%= routes.skills %></li>
-        
+        <li>Skills: <%= routes.skills %></li>
     </ul>
 
     <div class="buttonTag">
-        <a href="/api/seekers/<%=routes._id%>/edit"  >Edit</a>
-        <a href="/api/seekers"  >Back</a>
+        <a href="/api/seekers/<%=routes._id%>/edit">Edit</a>
+        <a href="/api/seekers">Back</a>
     </div>
 
     <form action="/api/seekers/<%= routes._id %>?_method=DELETE" method="POST">
-        <button> Delete</button>
+        <button>Delete</button>
     </form>
-    
 </body>
 </html>

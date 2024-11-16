@@ -1,0 +1,52 @@
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Container for provider cards */
+        .provider-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect for the provider card */
+        .provider-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Link styles inside provider card */
+        .provider-card a {
+            color: #333;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Hover effect for links */
+        .provider-card a:hover {
+            color: #007BFF;
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .provider-card {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .provider-card a {
+                font-size: 1rem;
+            }
+        }

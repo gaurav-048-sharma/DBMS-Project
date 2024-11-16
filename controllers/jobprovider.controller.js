@@ -95,7 +95,7 @@ module.exports.deleteProviders = async(req, res) => {
 
     if (confirm === "yes") {
         const deletedProvider = await JobProvider.findByIdAndDelete(id);
-        console.log("Deleted provider:", deletedProvider);
+        // console.log("Deleted provider:", deletedProvider);
         return res.redirect("/api/providers");
     }
 

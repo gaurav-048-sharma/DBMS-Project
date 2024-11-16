@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicants List</title>
+    <link rel="stylesheet" href="/css/applicants.css">
+</head>
+<body>
+    <h1>Name of the Applicants</h1>
+    <div class="container">
+        <% for(route of routes) { %>
+            <div class="provider-card">
+                <h2><%= route.name %></h2>
+                <button><a href="/api/seekers/show/<%= route._id %>">Show</a></button>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

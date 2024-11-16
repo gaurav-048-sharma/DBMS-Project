@@ -55,7 +55,7 @@ h1 {
 }
 
 /* Apply button styling */
-form button {
+form button{
     margin-top: 15px;
     background-color: #4a90e2;
     color: #fff;
@@ -67,7 +67,7 @@ form button {
     width: 100%;
 }
 
-form button:hover {
+form button:hover{
     background-color: #357ab8;
     transition: background-color 0.2s ease-in-out;
 }
@@ -78,4 +78,37 @@ form button:hover {
         flex-direction: column;
         align-items: center;
     }
+}
+/* Button Styling */
+button {
+    background-color: #007BFF; /* Primary blue color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Link Styling Inside Button */
+button a {
+    color: white; /* Text color for contrast */
+    text-decoration: none; /* Remove underline from link */
+    font-size: 1rem; /* Adjust font size */
+    font-weight: bold; /* Bold text */
+}
+
+button a:hover {
+    text-decoration: underline; /* Optional: underline text on hover */
+}
+
+/* Button for Full Clickability */
+button a {
+    display: block; /* Make the link fill the button */
+    width: 100%; /* Ensure full width clickability */
+    text-align: center; /* Center the text inside the button */
 }
