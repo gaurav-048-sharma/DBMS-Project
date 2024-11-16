@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seeker Dashboard</title>
+    <link rel="stylesheet" href="/css/seekerdashboard.css">
 </head>
 <body>
     <h1>Job Seekers</h1>
-
+    
+    <br><br>
+    <br><br>
     <div class="dashboard-container">
-        <% for(let route of routes) { %>
-            <div class="seeker-card">
-                <a href="/api/seekers/<%= route._id %>"><%= route.name %></a>
-                <form method="GET" action="/api/seekers/applynew">
-                    <button>Apply</button>
+        <% jobListings.forEach(listing => { %>
+            <div class="job-card">
+            <h3><%= listing.title %></h3>
+            <p><strong>Company/Provider Name:</strong> <%= listing.providerName %></p> <!-- Display provider's name -->
+            <p><strong>Description:</strong> <%= listing.description %></p>
+            <p><strong>Location:</strong> <%= listing.location %></p>
+            <p><strong>Requirements:</strong> <%= listing.requirements.join(', ') %></p>
+            <p><strong>Salary:</strong> <%= listing.salary %></p>
+
+                <!-- Apply Button Form -->
+                <form method="GET" action="/api/seekers/<%= listing._id%>/applynew">
+                    <!-- Hidden providerId to be submitted with the form -->
+                    <input type="hidden" name="providerId" value="<%= listing.providerId %>">
+
+                    <button type="submit">Apply</button>
                 </form>
             </div>
-        <% } %>
+        <% }) %>
+       
     </div>
+    
 </body>
 </html>

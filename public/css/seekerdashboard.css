@@ -1,0 +1,81 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #4a90e2;
+    margin-bottom: 30px;
+}
+
+/* Container for job listings */
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Styles for each job card */
+.job-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Hover effect for the job card */
+.job-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling job title */
+.job-card h3 {
+    color: #333;
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+
+/* Styling for paragraph text */
+.job-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Apply button styling */
+form button {
+    margin-top: 15px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #357ab8;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Responsive styling for small screens */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

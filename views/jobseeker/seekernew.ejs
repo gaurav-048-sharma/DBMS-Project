@@ -1,37 +1,45 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application Form</title>
-    <link rel="stylesheet" href="/css/form.css">
+    <title>Create Job Seeker</title>
+    <link rel="stylesheet" href="/css/seekernew.css">
 </head>
 <body>
-    <h1>Job Application Form</h1>
-    <form action="/api/job-seeker/apply" method="POST">
-        
+    <h1>Job Seeker Registration</h1>
+    <form action="/api/seekers" method="POST">
         <!-- Job Seeker Information -->
+        <h2>Job Seeker Information</h2>
         <label for="name">Full Name:</label>
-        <input type="text" name="name" id="name" value="" required>
+        <input type="text" name="name" id="name" required>
+        <br><br>
 
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
+        <br><br>
 
-        <label for="phone">Phone Number:</label>
+        <label for="phone">Phone:</label>
         <input type="tel" name="phone" id="phone" required>
+        <br><br>
 
-        <label for="skills">Skills (comma-separated):</label>
-        <input type="text" name="skills" id="skills" placeholder="e.g., JavaScript, Python, Node.js">
+        <label for="skills">Skills (comma separated):</label>
+        <input type="text" name="skills" id="skills" placeholder="e.g., JavaScript, React, Python">
+        <br><br>
 
-        <!-- Job Application Information -->
-        <h2>Job Application Details</h2>
-        <label for="jobId">Job ID:</label>
-        <input type="text" name="jobId" id="jobId" required>
+        <!-- Applied Jobs Information -->
+        <h2>Applied Jobs</h2>
+        
 
         <label for="providerId">Provider ID:</label>
-        <input type="text" name="providerId" id="providerId" required>
+        <input type="text" name="appliedJobs[0][providerId]" value="<%= routes.providerId %>" id="providerId">
+        <br><br>
 
-        <button type="submit">Apply Now</button>
+        
+        <button type="submit">Register Job Seeker</button>
     </form>
 </body>
 </html>

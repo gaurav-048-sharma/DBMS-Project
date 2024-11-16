@@ -7,9 +7,9 @@ const createJobProvider= require('../controllers/jobprovider.controller.js');
 router.put("/seekers/:id", createJobSeekers.updateSeekers);
 router.post('/seekers', createJobSeekers.Seekercreate);
 router.delete("/seekers/:id", createJobSeekers.deleteSeekers);
-router.get("/dashboard",createJobProvider.dashbaord);
+// router.get("/dashboard",createJobProvider.dashbaord);
 router.get("/seekers",createJobSeekers.seekerdashboard );
-router.get("/seekers/applynew", createJobSeekers.newSeeker);
+router.get("/seekers/:id/applynew", createJobSeekers.newSeeker);
 router.get("/seekers/:id", createJobSeekers.seekerApplicants);
 router.get("/seekers/:id/edit",createJobSeekers.editseekers );
 

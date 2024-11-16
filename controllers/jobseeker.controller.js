@@ -1,24 +1,95 @@
 const mongoose = require("mongoose");
 const JobSeeker = require("../model/jobseeker.model.js");
 const JobProvider = require('../model/jobprovider.model.js');
-module.exports.dashbaord = async(req, res) => {
-    const routes = await JobProvider.find({});
-    res.render("./jobprovider/providerdashboard.ejs", {routes});
-}
+// module.exports.dashbaord = async(req, res) => {
+//     const routes = await JobProvider.find({});
+//     res.render("./jobprovider/providerdashboard.ejs", {routes});
+// }
 module.exports.seekerdashboard = async(req, res) => {
-    const routes = await JobSeeker.find({});
-    res.render("./jobseeker/seekerdashboard.ejs" , {routes});
-    // const id = req.params.id;
-    // JobSeeker.findById(id).then((jobseeker) => {
-    //     if (!jobseeker) {
-    //         return res.status(404).json({ message: "Job seeker not found" });
-    //     }
-    //     res.json(jobseeker);
-    //     })
-    
+    // const routes = await JobProvider.find({});
+    // res.render("./jobseeker/seekerdashboard.ejs" , {routes});
+    const routes = await JobProvider.find({}).populate('jobListings').exec();
+
+    if (!routes || routes.length === 0) {
+        return res.status(404).send('No job listings or providers found.');
+    }
+
+    // Prepare data to pass to the EJS template
+    // Flattening job listings to include providerId for each listing
+    const jobListings = routes.flatMap(provider =>
+        provider.jobListings.map(listing => ({
+            ...listing.toObject(),
+            providerId: provider.providerId, // Add providerId to each listing
+            providerName: provider.name,
+            // routeName: '/api/seekers/apply' // Pass route name as dynamic data
+        }))
+    );
+
+    res.render("./jobseeker/seekerdashboard.ejs", {jobListings});
+
 }
-module.exports.newSeeker = (req, res) => {
-    res.render("./jobseeker/seekernew.ejs");
+module.exports.newSeeker = async(req, res) => {
+    // const provider = await JobProvider.findOne().populate('jobListings').exec();
+
+    // if (!provider || provider.jobListings.length === 0) {
+    //     return res.status(404).send('No job listings or providers found.');
+    // }
+
+    // const routes = await JobProvider.find().populate('jobListings').exec();
+
+    // if (!routes || routes.length === 0) {
+    //     return res.status(404).send('No job listings or providers found.');
+    // }
+
+    // // Flatten all job listings with their corresponding providerId
+    // const jobListings = routes.flatMap(provider => 
+    //     provider.jobListings.map(listing => ({
+    //         ...listing.toObject(),
+    //         providerId: provider.providerId // Add providerId to each listing
+    //     }))
+    // );
+
+    // res.render("./jobseeker/seekernew.ejs", { jobListings });
+
+
+    // const { providerId } = req.query;
+
+    // if (!providerId) {
+    //     return res.status(400).send('Provider ID is required.');
+    // }
+
+    // // Render the application form or handle the application logic here
+    // res.send(`Applying to job with provider ID: ${providerId}`);
+    const routes = await JobProvider.find({});
+    if (!routes ) {
+        return res.status(404).send('No job listings or providers found.');
+    }
+    const { providerId } = req.query;
+
+    if (!providerId) {
+        return res.status(400).send('Provider ID is required.');
+    }
+
+    // Handle application logic here (e.g., save to database, etc.)
+    // res.send(`You have applied to the job with provider ID: ${providerId}`);
+    res.render("./jobseeker/seekernew.ejs",{
+            routes: {
+                // jobId: jobId,
+                providerId: providerId
+            }
+        });
+    // const routes = await JobProvider.findOne({});
+    // if (!routes ) {
+    //     return res.status(404).send('No job listings or providers found.');
+    // }
+    // // const jobId = routes.jobListings[0].jobId; // Use the first job listing's ID
+    // const providerId = routes.providerId; // Use the provider's ID
+    // res.render("./jobseeker/seekernew.ejs",{
+    //     routes: {
+    //         // jobId: jobId,
+    //         providerId: providerId
+    //     }
+    // });
 }
 module.exports.seekerApplicants = async(req, res) => {
     const {id} = req.params;
@@ -46,10 +117,10 @@ module.exports.Seekercreate = async (req, res) => {
 
     //validate each job listing
     for( const [index, listing] of appliedJobs.entries()) {
-        if(!listing.jobId) console.log(`missing jobID[${index}].jobId`);
+        // if(!listing.jobId) console.log(`missing jobID[${index}].jobId`);
         if(!listing.providerId) console.log(`missing providerId[${index}].providerId`);
 
-        if(!listing.jobId || !listing.providerId) {
+        if(!listing.providerId) {
             return res.status(400).json({ message: `Invalid request: Missing required fields in applied`});
         }
     }
@@ -63,8 +134,9 @@ module.exports.Seekercreate = async (req, res) => {
             appliedJobs,
         });
         
-        const result = await newJobSeeker.save();
-        return res.status(201).json({ message: "Job seeker created successfully", data: result });
+        await newJobSeeker.save();
+        // return res.status(201).json({ message: "Job seeker created successfully", data: result });
+        res.redirect("/api/seekers");
     } catch (error) {
         console.error("Error creating job seeker:", error);
         return res.status(500).json({ message: "Server error", error: error.message });
@@ -95,7 +167,6 @@ module.exports.deleteSeekers = async(req, res) => {
     let deletedSeekers = await JobSeeker.findByIdAndDelete(id);
     console.log(deletedSeekers);
     res.redirect("/api/seekers");
-
 }
 
 
