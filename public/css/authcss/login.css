@@ -1,0 +1,89 @@
+/* Base reset for consistency across browsers */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8; /* Light gray-blue background for a modern look */
+    color: #333; /* Dark text for readability */
+    height: 100%;
+}
+
+/* Center the login container */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Header styling */
+.login-container h1 {
+    margin-bottom: 20px;
+    color: #2c3e50; /* Deep gray for headers */
+}
+
+/* Form styling */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label styling */
+.login-form label {
+    font-size: 14px;
+    text-align: left;
+    color: #555; /* Slightly lighter gray for labels */
+    margin-bottom: 5px;
+}
+
+/* Input field styling */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect for input fields */
+.login-form input:focus {
+    outline: none;
+    border-color: #3498db; /* Bright blue for focus state */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Button styling */
+.login-form button {
+    padding: 12px 20px;
+    background-color: #3498db; /* Bright blue for buttons */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.login-form button:hover {
+    background-color: #2980b9; /* Slightly darker blue on hover */
+}
+
+/* Responsive design for smaller devices */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px 20px;
+    }
+
+    .login-form button {
+        font-size: 14px;
+    }
+}
